@@ -25,3 +25,5 @@ hs_err_pid*
 #intellij related confifuratioin files
 .idea/*
 /.idea/
+/backend/backend.iml
+/frontend/frontend.iml
