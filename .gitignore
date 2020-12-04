@@ -27,3 +27,5 @@ hs_err_pid*
 /.idea/
 /backend/backend.iml
 /frontend/frontend.iml
+/frontend/WerWorkForce/.idea/
+/frontend/.idea/
