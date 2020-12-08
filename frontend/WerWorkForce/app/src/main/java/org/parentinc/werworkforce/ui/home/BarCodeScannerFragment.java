@@ -104,6 +104,8 @@ public class BarCodeScannerFragment extends Fragment {
                     Snackbar snackbar = Snackbar
                             .make(v, "Please Enter Worker Id", Snackbar.LENGTH_LONG);
                     snackbar.show();
+
+                    workerId.setText("Worker Id Changes");
                 }
             }
         });
