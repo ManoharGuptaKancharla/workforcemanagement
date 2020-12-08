@@ -18,7 +18,10 @@
             android:id="@+id/nav_gallery"
             android:name="org.parentinc.werworkforce.ui.gallery.GalleryFragment"
             android:label="@string/menu_gallery"
-            tools:layout="@layout/fragment_gallery"/>
+            tools:layout="@layout/fragment_gallery">
+        <action android:id="@+id/action_nav_gallery_to_addWorkerFragment" app:destination="@id/addWorkerFragment"/>
+        <action android:id="@+id/action_nav_gallery_to_nav_barcode_scanner" app:destination="@id/nav_barcode_scanner"/>
+    </fragment>
 
     <fragment
             android:id="@+id/nav_slideshow"
@@ -31,9 +34,26 @@
               android:label="fragment_bar_code_scanner" tools:layout="@layout/fragment_bar_code_scanner">
         <action android:id="@+id/action_nav_barcode_scanner_to_nav_worker_display"
                 app:destination="@id/nav_worker_display"/>
+        <action android:id="@+id/action_nav_barcode_scanner_to_nav_download_worker_fragment"
+                app:destination="@id/nav_download_worker_fragment"/>
+        <action android:id="@+id/action_nav_barcode_scanner_to_nav_modify_worker_fragment"
+                app:destination="@id/nav_modify_worker_fragment"/>
+        <action android:id="@+id/action_nav_barcode_scanner_to_nav_remove_worker_fragment"
+                app:destination="@id/nav_remove_worker_fragment"/>
     </fragment>
 
     <fragment android:id="@+id/nav_worker_display"
               android:name="org.parentinc.werworkforce.ui.home.WorkerDisplayFragment"
               android:label="fragment_worker_display" tools:layout="@layout/fragment_worker_display"/>
+    <fragment android:id="@+id/addWorkerFragment" android:name="org.parentinc.werworkforce.ui.gallery.AddWorkerFragment"
+              android:label="fragment_add_worker" tools:layout="@layout/fragment_add_worker"/>
+    <fragment android:id="@+id/nav_download_worker_fragment"
+              android:name="org.parentinc.werworkforce.ui.gallery.DownloadWorkerFragment"
+              android:label="fragment_download_worker" tools:layout="@layout/fragment_download_worker"/>
+    <fragment android:id="@+id/nav_modify_worker_fragment"
+              android:name="org.parentinc.werworkforce.ui.gallery.ModifyWorkerFragment"
+              android:label="fragment_modify_worker" tools:layout="@layout/fragment_modify_worker"/>
+    <fragment android:id="@+id/nav_remove_worker_fragment"
+              android:name="org.parentinc.werworkforce.ui.gallery.RemoveWorkerFragment"
+              android:label="fragment_remove_worker" tools:layout="@layout/fragment_remove_worker"/>
 </navigation>

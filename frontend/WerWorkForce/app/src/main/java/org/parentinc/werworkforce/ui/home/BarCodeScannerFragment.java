@@ -2,6 +2,7 @@ package org.parentinc.werworkforce.ui.home;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.navigation.Navigation;
+import com.google.android.material.snackbar.Snackbar;
 import org.parentinc.werworkforce.R;
 
 /**
@@ -60,7 +62,6 @@ public class BarCodeScannerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -76,15 +77,34 @@ public class BarCodeScannerFragment extends Fragment {
 
         textView.setText(mParam1);
 
+        final EditText workerId = root.findViewById(R.id.edit_text_worker_id);
+
         buttonToWorkerDisplayFragment = root.findViewById(R.id.button_to_worker_display);
 
         buttonToWorkerDisplayFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle1 = new Bundle();
-                bundle1.putCharSequence("log_in_out_type", mParam1);
-                bundle1.putCharSequence("bar_code_id", "12345678");
-                Navigation.findNavController(v).navigate(R.id.action_nav_barcode_scanner_to_nav_worker_display, bundle1);
+                if(!workerId.getText().toString().equals("Worker Id")){
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putCharSequence("log_in_out_type", mParam1);
+                    bundle1.putCharSequence("bar_code_id", workerId.getText().toString());
+                    if(mParam1 == "login"){
+                        Navigation.findNavController(v).navigate(R.id.action_nav_barcode_scanner_to_nav_worker_display, bundle1);
+                    }
+                    if(mParam1 == "modify_worker"){
+                        Navigation.findNavController(v).navigate(R.id.action_nav_barcode_scanner_to_nav_modify_worker_fragment, bundle1);
+                    }
+                    if(mParam1 == "remove_worker"){
+                        Navigation.findNavController(v).navigate(R.id.action_nav_barcode_scanner_to_nav_remove_worker_fragment, bundle1);
+                    }
+                    if(mParam1 == "worker_details"){
+                        Navigation.findNavController(v).navigate(R.id.action_nav_barcode_scanner_to_nav_download_worker_fragment, bundle1);
+                    }
+                }else{
+                    Snackbar snackbar = Snackbar
+                            .make(v, "Please Enter Worker Id", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
             }
         });
 

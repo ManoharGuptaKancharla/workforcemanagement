@@ -20,6 +20,8 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
+    private Button logInButton;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -33,7 +35,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button logInButton = root.findViewById(R.id.logInButton);
+        logInButton = root.findViewById(R.id.logInButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
